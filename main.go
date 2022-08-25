@@ -72,8 +72,22 @@ func weatherDataHandler(w http.ResponseWriter, r *http.Request) {
 	city := strings.SplitN(r.URL.Path, "/", 3)[2]
 	data, _ := query(city)
 	//Response to frontend
-	t, _ := template.ParseFiles("static/weather.html")
-	t.Execute(w, data)
+	if data.Main.Temperature < 0 {
+		t, _ := template.ParseFiles("static/0 and less.html")
+		t.Execute(w, data)
+	} else if data.Main.Temperature >= 0 && data.Main.Temperature <= 10 {
+		t, _ := template.ParseFiles("static/0-10.html")
+		t.Execute(w, data)
+	} else if data.Main.Temperature > 10 && data.Main.Temperature <= 20 {
+		t, _ := template.ParseFiles("static/10-20.html")
+		t.Execute(w, data)
+	} else if data.Main.Temperature > 20 && data.Main.Temperature <= 30 {
+		t, _ := template.ParseFiles("static/20-30.html")
+		t.Execute(w, data)
+	} else if data.Main.Temperature > 30 {
+		t, _ := template.ParseFiles("static/30 and more.html")
+		t.Execute(w, data)
+	}
 }
 
 //Call handlers

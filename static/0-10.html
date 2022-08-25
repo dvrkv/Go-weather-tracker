@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <title>weather-tracker</title>
+    <style>
+        body{
+            margin: 0;
+            height: 100%;
+            margin-top: 2%;
+            background-size: cover;
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(https://media1.giphy.com/media/l0NwISrjkSoJPRJPa/giphy.gif?cid=ecf05e47rb81o4v828pyz5fquhgajgouwtzo8ntuo1k5r0ip&rid=giphy.gif&ct=g);
+        }
+        strong{
+            font-size: 70px;
+            font-weight: 800;
+            color: white;
+
+        }
+        small{
+            font-size: 70px;
+            font-weight: 50;
+            color: #fff;
+            margin-left: -200px;
+        }
+        button{
+            width: auto;
+            padding: 20px 20px;
+            text-align: center;
+            margin: 10px 10px;
+            margin-left: 50px;
+            border-radius: 25px;
+            font-weight: bold;
+            border: 2px solid #009688;
+            background: transparent;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1> <small>City</small><button type="button"><a href="https://www.google.com/search?q={{ .City }}" target="_blank"><strong>{{ .City }}</strong></a></button></h1>
+    </div>
+
+    <div class="container">
+        <h1><small>Temperature</small><button type="button"><strong>{{ .Main.Temperature }}°C</strong></button></h1>
+    </div>
+
+    <div class="container">
+        <h1><small>Feels like</small><button type="button"><strong>{{ .Main.Feels_like }}°C</strong></button></h1>
+    </div>
+
+    <div class="container">
+        <h1><small>Humidity</small><button type="button"><strong>{{ .Main.Humidity }}%</strong></button></h1>
+    </div>
+</body>
+</html>
